@@ -1,0 +1,653 @@
+{
+    "project":  "focus-tree-kotlin",
+    "schemaVersion":  1,
+    "allowedStatuses":  [
+                            "not-started",
+                            "in-progress",
+                            "pass",
+                            "blocked"
+                        ],
+    "features":  [
+                     {
+                         "id":  "FT-FND-001",
+                         "name":  "Reproducible Android foundation",
+                         "description":  "Create the Kotlin Android project and deterministic quality pipeline without implementing product features.",
+                         "dependencies":  [
+
+                                          ],
+                         "status":  "pass",
+                         "acceptanceCriteria":  [
+                                                    "A single :app Jetpack Compose project builds from the checked-in Gradle wrapper",
+                                                    "Dependencies and plugins are pinned in gradle/libs.versions.toml",
+                                                    "Package layout follows docs/ARCHITECTURE.md",
+                                                    "Ktlint, Detekt, JVM tests, Android lint, and debug assembly are available",
+                                                    "No signing secret, local.properties, generated APK, or SDK path is committed"
+                                                ],
+                         "verification":  [
+                                              "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                              "./scripts/verify.sh full"
+                                          ],
+                         "evidence":  {
+                                          "recordedAt":  "2026-11-07",
+                                          "implementation":  [
+                                                                 "Added a single :app Kotlin/Jetpack Compose project with AGP 9.1.1 and Gradle 9.3.1",
+                                                                 "Pinned plugins and libraries in gradle/libs.versions.toml",
+                                                                 "Created every package boundary listed in docs/ARCHITECTURE.md",
+                                                                 "Configured ktlintCheck, detekt, testDebugUnitTest, lintDebug, and assembleDebug",
+                                                                 "Configured Ktlint and Detekt to recognize the standard @Composable naming convention without disabling either gate",
+                                                                 "Declared Android 12+ data extraction rules that exclude app data from cloud backup and device transfer",
+                                                                 "Added a JVM package-layout test and an original code-drawn launcher vector",
+                                                                 "Checked in Gradle wrapper scripts and jar; wrapper jar SHA-256 is CB0DA6751C2B753A16AC168BB354870EBB1E162E9083F116729CEC9C781156B8",
+                                                                 "Scanned the workspace successfully for local.properties, APK, AAB, JKS, and keystore files"
+                                                             ],
+                                          "commands":  [
+                                                           {
+                                                               "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                                               "result":  "pass: BUILD SUCCESSFUL; ktlintCheck, detekt, testDebugUnitTest, lintDebug, and assembleDebug completed"
+                                                           },
+                                                           {
+                                                               "command":  "ADB install/start plus emulator screenshots and UI Automator hierarchy dumps",
+                                                               "result":  "pass: API 37 emulator rendered the foundation in light theme, dark theme, and font scale 1.5 without clipping; both visible strings were exposed as TextView accessibility nodes"
+                                                           },
+                                                           {
+                                                               "command":  "PowerShell ConvertFrom-Json plus XML parsing and forbidden-artifact scan",
+                                                               "result":  "pass: feature_list.json and all Android XML resources parsed; forbidden-artifact scan was clean"
+                                                           },
+                                                           {
+                                                               "command":  "node validate-harness.mjs --target D:\\focus-tree-kotlin --json",
+                                                               "result":  "pass: 100/100 across instructions, state, verification, scope, and lifecycle"
+                                                           },
+                                                           {
+                                                               "command":  "Node JSON dependency-graph validation",
+                                                               "result":  "pass: 11 valid acyclic features including FT-BACKEND-001 and FT-SYNC-001"
+                                                           }
+                                                       ],
+                                          "diagnostics":  [
+                                                              "The previously blocked Gradle distribution and Maven dependencies downloaded successfully after network access was approved",
+                                                              "The Computer Use native helper was unavailable, so device evidence was collected through the Android emulator and ADB",
+                                                              "The emulator required a cold boot and an ADB server restart before the host key was authorized"
+                                                          ],
+                                          "blocker":  null,
+                                          "completionState":  "Complete: all acceptance criteria, full verification, and required emulator UI checks passed."
+                                      }
+                     },
+                     {
+                         "id":  "FT-DESIGN-001",
+                         "name":  "Pixel-art UI/UX design system",
+                         "description":  "Define and implement an original, accessible pixel-art visual system and reusable Compose UI patterns for the focus timer and digital garden before building further product screens.",
+                         "dependencies":  [
+                                              "FT-FND-001"
+                                          ],
+                         "status":  "pass",
+                         "acceptanceCriteria":  [
+                                                    "A concise design spec documents user goals, navigation, screen hierarchy, key states, and pixel-art visual direction for setup/timer, garden, history, and settings",
+                                                    "Reusable Compose design tokens cover light and dark color palettes, typography, spacing, shape, borders, and pixel-inspired accents without pixelating body text",
+                                                    "Original scalable pixel-art motifs are implemented with code-drawn/vector assets or documented as reusable composable patterns; no unlicensed/copied assets are used",
+                                                    "A representative screen or component demonstrates the system in Compose and supports accessibility semantics, contrast, responsive layout, and large font scale",
+                                                    "Design decisions preserve minimum touch targets and communicate non-decorative artwork meaning through accessible text or semantics",
+                                                    "Design spec and representative UI are reviewed in light theme, dark theme, and large font scale with emulator screenshots recorded"
+                                                ],
+                         "verification":  [
+                                              "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                              "Compose UI tests cover representative visual component semantics and interactions",
+                                              "Emulator evidence records light, dark, and large-font review"
+                                          ],
+                         "evidence":  {
+                                          "implementation":  [
+                                                                 "Documented screen goals, hierarchy, states, navigation, visual direction, and accessibility review criteria.",
+                                                                 "Added reusable light/dark color, typography, spacing, shape, and pixel-border tokens plus an original Compose-drawn garden motif.",
+                                                                 "Applied the motif and coordinated preset selection colors to the running focus screen; decorative artwork is excluded from accessibility traversal.",
+                                                                 "Captured light, dark, and 1.5x large-font emulator screenshots under docs/evidence/design/."
+                                                             ],
+                                          "blocker":  null,
+                                          "completionState":  "Complete: implementation, Compose UI semantics test, emulator review, and full verification passed.",
+                                          "recordedAt":  "2026-11-07",
+                                          "designSpec":  "design/pixel-uiux-spec.md",
+                                          "commands":  [
+                                                           {
+                                                               "result":  "pass, exit code 0",
+                                                               "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full"
+                                                           },
+                                                           {
+                                                               "result":  "pass, 1/1 test on Medium_Phone_API_37.0",
+                                                               "command":  ".\\gradlew.bat connectedDebugAndroidTest \u0027-Pandroid.testInstrumentationRunnerArguments.class=com.focustree.core.ui.PixelDesignSystemTest\u0027 --stacktrace"
+                                                           }
+                                                       ],
+                                          "screenshots":  [
+                                                              "docs/evidence/design/light.png",
+                                                              "docs/evidence/design/dark.png",
+                                                              "docs/evidence/design/large-font.png"
+                                                          ]
+                                      }
+                     },
+                     {
+                         "id":  "FT-SETUP-001",
+                         "name":  "Focus session setup",
+                         "description":  "Allow an intention and validated preset/custom duration to be configured before starting.",
+                         "dependencies":  [
+                                              "FT-FND-001",
+                                              "FT-DESIGN-001"
+                                          ],
+                         "status":  "pass",
+                         "acceptanceCriteria":  [
+                                                    "Preset durations are 15, 25, 45, and 60 minutes",
+                                                    "Custom duration accepts 5 through 120 minutes and rejects other values",
+                                                    "Intention is optional and limited to 120 characters",
+                                                    "A second session cannot start while one is active",
+                                                    "Validation has deterministic JVM tests"
+                                                ],
+                         "verification":  [
+                                              "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                              "Compose test covers valid and invalid setup"
+                                          ],
+                         "evidence":  {
+                                          "recordedAt":  "2026-11-07",
+                                          "implementation":  [
+                                                                 "Added deterministic validation for preset durations, custom 5â€“120 minute durations, and optional 120-character intentions",
+                                                                 "Added immutable setup UI state, explicit events, and a SessionGateway boundary that prevents a second active session",
+                                                                 "Added an accessible Compose setup screen with responsive 2x2 preset layout",
+                                                                 "Pinned AndroidX Test and Espresso 3.7.0 for API 37 instrumentation compatibility"
+                                                             ],
+                                          "commands":  [
+                                                           {
+                                                               "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                                               "result":  "pass: Ktlint, Detekt, JVM tests, Android lint, and debug assembly succeeded"
+                                                           },
+                                                           {
+                                                               "command":  ".\\gradlew.bat connectedDebugAndroidTest",
+                                                               "result":  "pass: Compose valid/invalid custom-duration test passed on Medium_Phone_API_37.0"
+                                                           },
+                                                           {
+                                                               "command":  "ADB install/start plus screenshots and UI Automator dump",
+                                                               "result":  "pass: light, dark, and font scale 1.5 checked; responsive preset grid removed large-text clipping and controls exposed accessible nodes"
+                                                           }
+                                                       ]
+                                      }
+                     },
+                     {
+                         "id":  "FT-TIMER-001",
+                         "name":  "Deterministic timer state machine",
+                         "description":  "Implement active, completed, and abandoned transitions using persisted timestamps and a fakeable clock.",
+                         "dependencies":  [
+                                              "FT-SETUP-001",
+                                              "FT-DESIGN-001"
+                                          ],
+                         "status":  "pass",
+                         "acceptanceCriteria":  [
+                                                    "Remaining time is derived from expectedEndAt and Clock.now()",
+                                                    "At most one session is active",
+                                                    "Complete and abandon transitions are idempotent",
+                                                    "Negative remaining time is clamped to zero",
+                                                    "Domain tests cover completion, cancellation, duplicate events, clock jumps, and restoration"
+                                                ],
+                         "verification":  [
+                                              "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                              "Timer domain test suite passes without real-time waits"
+                                          ],
+                         "evidence":  {
+                                          "recordedAt":  "2026-11-07",
+                                          "implementation":  [
+                                                                 "Added a testable Clock boundary and Android SystemClock implementation",
+                                                                 "Added immutable FocusSession and TimerSnapshot domain models using epoch-millisecond timestamps",
+                                                                 "Added a timer state machine with one-active-session enforcement, timestamp-derived remaining time, and idempotent completed/abandoned transitions",
+                                                                 "Connected the setup gateway to the timestamp-based timer engine"
+                                                             ],
+                                          "commands":  [
+                                                           {
+                                                               "command":  ".\\gradlew.bat ktlintCheck detekt :app:testDebugUnitTest --tests com.focustree.feature.timer.TimerStateMachineTest",
+                                                               "result":  "pass: focused timer tests and quality checks succeeded"
+                                                           },
+                                                           {
+                                                               "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                                               "result":  "pass: BUILD SUCCESSFUL; Ktlint, Detekt, JVM tests, Android lint, and debug assembly succeeded"
+                                                           }
+                                                       ],
+                                          "coverage":  [
+                                                           "completion and cancellation",
+                                                           "duplicate terminal events",
+                                                           "one-active-session invariant",
+                                                           "backward and forward clock jumps",
+                                                           "negative remaining-time clamp",
+                                                           "active and expired restoration"
+                                                       ]
+                                      }
+                     },
+                     {
+                         "id":  "FT-DATA-001",
+                         "name":  "Local session persistence",
+                         "description":  "Persist focus sessions in Room and preferences in DataStore.",
+                         "dependencies":  [
+                                              "FT-TIMER-001"
+                                          ],
+                         "status":  "pass",
+                         "acceptanceCriteria":  [
+                                                    "Room stores active, completed, and abandoned session outcomes",
+                                                    "Completion and reward granting are atomic and idempotent",
+                                                    "DataStore stores theme and default duration only",
+                                                    "DAO tests cover active-session uniqueness, ordering, and statistics queries",
+                                                    "Database schema export and migration test setup are checked in"
+                                                ],
+                         "verification":  [
+                                              "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                              "Room DAO and migration tests pass"
+                                          ],
+                         "evidence":  {
+                                          "recordedAt":  "2026-11-07",
+                                          "implementation":  [
+                                                                 "Added Room schema v1 for active, completed, and abandoned focus sessions with a unique active-session slot",
+                                                                 "Implemented single-statement completion and abandonment updates so terminal outcomes and reward state are atomic and idempotent",
+                                                                 "Added ordered history, active-session, and completed-duration statistics queries behind RoomFocusSessionStore",
+                                                                 "Added Preferences DataStore storage for theme and validated default duration only",
+                                                                 "Checked in the exported Room schema and MigrationTestHelper setup",
+                                                                 "Pinned Room 2.8.5, KSP 2.3.12, DataStore 1.2.1, coroutines 1.10.2, and serialization 1.8.1; DataStore remains at 1.2.1 because 1.3.0 requires minSdk 24"
+                                                             ],
+                                          "commands":  [
+                                                           {
+                                                               "command":  ".\\gradlew.bat connectedDebugAndroidTest \u0027-Pandroid.testInstrumentationRunnerArguments.class=com.focustree.core.database.DatabaseSchemaTest,com.focustree.core.database.FocusSessionDaoTest,com.focustree.core.preferences.FocusPreferencesRepositoryTest\u0027 --stacktrace",
+                                                               "result":  "pass: 7 instrumentation tests passed on Medium_Phone_API_37.0"
+                                                           },
+                                                           {
+                                                               "command":  ".\\gradlew.bat lintDebug --rerun-tasks --stacktrace",
+                                                               "result":  "pass: localized DataStore 1.2.1/minSdk 23 lint exemption verified without cache"
+                                                           },
+                                                           {
+                                                               "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                                               "result":  "pass: BUILD SUCCESSFUL; ktlintCheck, detekt, testDebugUnitTest, lintDebug, and assembleDebug completed"
+                                                           }
+                                                       ]
+                                      }
+                     },
+                     {
+                         "id":  "FT-LIFE-001",
+                         "name":  "Lifecycle and background continuity",
+                         "description":  "Restore the timer correctly across rotation, backgrounding, and process recreation, with a completion notification where permitted.",
+                         "dependencies":  [
+                                              "FT-DATA-001",
+                                              "FT-DESIGN-001"
+                                          ],
+                         "status":  "pass",
+                         "acceptanceCriteria":  [
+                                                    "Rotation does not reset or duplicate an active session",
+                                                    "Process recreation restores from persisted timestamps",
+                                                    "A background completion produces at most one record and reward",
+                                                    "Notification permission is requested only in context on supported Android versions",
+                                                    "Lifecycle and notification behavior has emulator/device evidence"
+                                                ],
+                         "verification":  [
+                                              "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                              "Instrumentation restoration test passes",
+                                              "Manual background notification check is recorded"
+                                          ],
+                         "evidence":  {
+                                          "recordedAt":  "2026-11-07",
+                                          "completionState":  "Complete: rotation, Activity recreation, true process death/relaunch, background idempotent reward/notification, contextual permission behavior, full verification, and emulator evidence passed.",
+                                          "implementation":  [
+                                                                 "Added WorkManager one-time completion work keyed by session ID; it reads active Room state and finalizes once when the saved expected end time is reached.",
+                                                                 "The focus screen restores its active session and remaining time from Room timestamps after activity recreation or process restart.",
+                                                                 "Notification permission is requested only after Start focus on Android 13+; denial leaves the session running and notification delivery safely no-ops if permission is revoked.",
+                                                                 "Added instrumentation coverage for Activity recreation and rotation; background worker test confirms one completed row, one reward, and a notification.",
+                                                                 "Added narrowly scoped WorkManager 2.11.2 lint exemption because 2.12.0 requires API 24 while minSdk remains 23."
+                                                             ],
+                                          "commands":  [
+                                                           {
+                                                               "command":  ".\\gradlew.bat connectedDebugAndroidTest",
+                                                               "result":  "pass, 12/12 instrumentation tests on Medium_Phone_API_37.0"
+                                                           },
+                                                           {
+                                                               "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                                               "result":  "pass, exit code 0; Ktlint, Detekt, JVM tests, Android lint, and debug assembly"
+                                                           },
+                                                           {
+                                                               "command":  "Manual API 37 emulator lifecycle check: start, force-stop, relaunch, inspect UI Automator text/countdown",
+                                                               "result":  "pass; intention restored and remaining time decreased from 24:56 to 24:40"
+                                                           },
+                                                           {
+                                                               "command":  "Manual API 37 notification prompt check: inspect setup, tap Start focus, deny permission",
+                                                               "result":  "pass; no prompt on initial screen, prompt appeared after action, timer continued after denial; test session abandoned without reward"
+                                                           }
+                                                       ],
+                                          "screenshots":  [
+                                                              "docs/evidence/lifecycle/before-process-death.png",
+                                                              "docs/evidence/lifecycle/process-recreation.png",
+                                                              "docs/evidence/lifecycle/permission-before-action.png",
+                                                              "docs/evidence/lifecycle/permission-prompt.png",
+                                                              "docs/evidence/lifecycle/permission-denied-session.png"
+                                                          ]
+                                      }
+                     },
+                     {
+                         "id":  "FT-GARDEN-001",
+                         "name":  "Original local garden",
+                         "description":  "Render today\u0027s completed focus sessions as an accessible, original digital garden.",
+                         "dependencies":  [
+                                              "FT-DATA-001",
+                                              "FT-DESIGN-001"
+                                          ],
+                         "status":  "pass",
+                         "acceptanceCriteria":  [
+                                                    "Each completed session maps to exactly one visible growth item",
+                                                    "Abandoned sessions do not create growth items",
+                                                    "Garden state is derived from persisted sessions",
+                                                    "Visuals use original code-drawn or properly licensed assets",
+                                                    "Content descriptions or equivalent semantics communicate non-decorative state"
+                                                ],
+                         "verification":  [
+                                              "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                              "Compose test covers completed and abandoned projections",
+                                              "Light, dark, and large-font screenshots are reviewed"
+                                          ],
+                         "evidence":  {
+                                          "recordedAt":  "2026-11-07",
+                                          "implementation":  [
+                                                                 "Added a Room-backed session-history flow and a local-day garden projection; each valid completed session creates one growth item, while abandoned, duplicate, invalid, and out-of-window sessions are excluded.",
+                                                                 "Added GardenRepository and GardenViewModel with explicit loading, content, empty, and error states.",
+                                                                 "Added an accessible Compose garden screen with an original Canvas plant motif, item labels, intention and duration, and Focus/Garden bottom navigation.",
+                                                                 "Added projection tests including 23-hour spring and 25-hour autumn daylight-saving days, Room repository tests, and Compose projection/navigation tests."
+                                                             ],
+                                          "commands":  [
+                                                           {
+                                                               "command":  ".\\gradlew.bat ktlintCheck detekt testDebugUnitTest compileDebugAndroidTestKotlin --stacktrace",
+                                                               "result":  "pass, focused checks completed"
+                                                           },
+                                                           {
+                                                               "command":  ".\\gradlew.bat connectedDebugAndroidTest --stacktrace",
+                                                               "result":  "pass, 16/16 instrumentation tests on Medium_Phone_API_37.0"
+                                                           },
+                                                           {
+                                                               "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                                               "result":  "pass, exit code 0; ktlintCheck, detekt, JVM tests, lintDebug, and assembleDebug"
+                                                           }
+                                                       ],
+                                          "screenshots":  [
+                                                              "docs/evidence/garden/light.png",
+                                                              "docs/evidence/garden/dark.png",
+                                                              "docs/evidence/garden/large-font.png"
+                                                          ],
+                                          "accessibility":  "Garden cards expose plant number, intention, and duration as text semantics; the Canvas illustration is decorative and hidden from accessibility services. Compose assertions verified completed content and absence of abandoned content."
+                                      }
+                     },
+                     {
+                         "id":  "FT-HISTORY-001",
+                         "name":  "History and seven-day statistics",
+                         "description":  "Show focus outcomes and compute today/weekly totals from persisted records.",
+                         "dependencies":  [
+                                              "FT-DATA-001",
+                                              "FT-DESIGN-001"
+                                          ],
+                         "status":  "pass",
+                         "acceptanceCriteria":  [
+                                                    "History is reverse chronological and distinguishes completed from abandoned",
+                                                    "Today\u0027s focused minutes include completed sessions only",
+                                                    "Seven-day totals are correct across time-zone and daylight-saving boundaries",
+                                                    "Empty states are useful and accessible",
+                                                    "Statistics tests use fixed clocks and explicit zones"
+                                                ],
+                         "verification":  [
+                                              "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                              "History/statistics tests pass for boundary dates"
+                                          ],
+                         "evidence":  {
+                                          "recordedAt":  "2026-11-07",
+                                          "implementation":  [
+                                                                 "Added a Room-backed history projection ordered newest first, distinguishing completed and abandoned outcomes.",
+                                                                 "Computed today and seven local calendar-day completed focus totals from persisted start/finish timestamps, bounded by planned duration and clamped against negative clock anomalies.",
+                                                                 "Added local-day buckets using explicit timezone and Calendar day arithmetic; unit tests verify reverse ordering, completed-only totals, duplicate suppression, boundaries, and 23/25-hour DST days.",
+                                                                 "Added an accessible empty state, seven-day summary and session timeline, integrated as a History destination."
+                                                             ],
+                                          "commands":  [
+                                                           {
+                                                               "command":  ".\\gradlew.bat ktlintCheck detekt testDebugUnitTest compileDebugAndroidTestKotlin --stacktrace",
+                                                               "result":  "pass"
+                                                           },
+                                                           {
+                                                               "command":  ".\\gradlew.bat connectedDebugAndroidTest --stacktrace",
+                                                               "result":  "pass, 16/16 tests on Medium_Phone_API_37.0"
+                                                           },
+                                                           {
+                                                               "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                                               "result":  "pass, exit code 0; ktlintCheck, detekt, JVM tests, lintDebug, assembleDebug"
+                                                           }
+                                                       ],
+                                          "screenshots":  [
+                                                              "docs/evidence/history/light.png",
+                                                              "docs/evidence/history/dark.png",
+                                                              "docs/evidence/history/large-font.png"
+                                                          ],
+                                          "accessibility":  "Session outcome and details are text semantics; the empty state is text and navigation has a History label. Reviewed empty-state light, dark, and 1.5x font screenshots."
+                                      }
+                     },
+                     {
+                         "id":  "FT-SETTINGS-001",
+                         "name":  "Local preferences and theme",
+                         "description":  "Allow default duration and system/light/dark theme preferences.",
+                         "dependencies":  [
+                                              "FT-FND-001",
+                                              "FT-DATA-001",
+                                              "FT-DESIGN-001"
+                                          ],
+                         "status":  "pass",
+                         "acceptanceCriteria":  [
+                                                    "Theme supports system, light, and dark modes",
+                                                    "Default duration is validated with the same domain rule as session setup",
+                                                    "Preferences survive process recreation",
+                                                    "Settings exposes an accessible sync opt-in and status without requiring a human account",
+                                                    "Settings do not contain social, advertising, subscription, or payment controls"
+                                                ],
+                         "verification":  [
+                                              "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                              "Preference repository and settings ViewModel tests pass"
+                                          ],
+                         "evidence":  {
+                                          "recordedAt":  "2026-11-07",
+                                          "implementation":  [
+                                                                 "Wired Preferences DataStore into the application for persisted SYSTEM/LIGHT/DARK theme, validated default focus duration, and sync opt-in.",
+                                                                 "Added a Settings ViewModel and Compose settings destination. Theme changes apply immediately, the default duration is validated with SessionSetupValidator and initializes focus setup, and sync status clearly says service setup is not connected yet.",
+                                                                 "Sync remains off by default and no human account is required. No social, ads, subscription, or payment controls are present.",
+                                                                 "Added JVM ViewModel validation/persistence tests, Android DataStore persistence and invalid-duration tests, and Compose settings semantics coverage."
+                                                             ],
+                                          "commands":  [
+                                                           {
+                                                               "command":  ".\\gradlew.bat ktlintCheck detekt testDebugUnitTest compileDebugAndroidTestKotlin --stacktrace",
+                                                               "result":  "pass"
+                                                           },
+                                                           {
+                                                               "command":  ".\\gradlew.bat connectedDebugAndroidTest --stacktrace",
+                                                               "result":  "pass, 17/17 tests on Medium_Phone_API_37.0"
+                                                           },
+                                                           {
+                                                               "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                                               "result":  "pass, exit code 0; Ktlint, Detekt, JVM tests, lintDebug, assembleDebug"
+                                                           }
+                                                       ],
+                                          "screenshots":  [
+                                                              "docs/evidence/settings/light.png",
+                                                              "docs/evidence/settings/dark.png",
+                                                              "docs/evidence/settings/large-font.png"
+                                                          ],
+                                          "accessibility":  "Theme options use radio semantics, duration has a labeled field and validation text, sync has an explicit content description and state text. Reviewed light, dark, and large-font emulator screenshots."
+                                      }
+                     },
+                     {
+                         "id":  "FT-BACKEND-001",
+                         "name":  "Kotlin PostgreSQL sync service",
+                         "description":  "Provide a secure Kotlin HTTP API and PostgreSQL persistence for optional anonymous synchronization.",
+                         "dependencies":  [
+                                              "FT-FND-001"
+                                          ],
+                         "status":  "pass",
+                         "acceptanceCriteria":  [
+                                                    "A separate :server Kotlin module exposes health, installation registration, session upsert, and paged session download endpoints",
+                                                    "Android never connects directly to PostgreSQL and no database credential is present in the APK or source tree",
+                                                    "PostgreSQL schema is created through checked-in versioned Flyway migrations",
+                                                    "Anonymous installation bearer tokens are stored hashed and can be revoked",
+                                                    "Session upserts are idempotent on installation ID and client session ID",
+                                                    "Only finalized completed or abandoned sessions are accepted and completion rewards cannot be duplicated",
+                                                    "Server logs exclude intention text, bearer tokens, and database credentials",
+                                                    "Unit and PostgreSQL integration tests cover authentication, migration, upsert, paging, invalid input, and duplicate delivery"
+                                                ],
+                         "verification":  [
+                                              "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                              ":server:test passes",
+                                              ":server:postgresIntegrationTest passes against an ephemeral PostgreSQL database"
+                                          ],
+                         "evidence":  {
+                                          "recordedAt":  "2026-11-07",
+                                          "implementation":  [
+                                                                 "Added a separate Kotlin/JVM :server module using Ktor, PostgreSQL JDBC/Hikari, and Flyway migrations; database connection settings come only from DATABASE_URL, DB_USER, DB_PASSWORD, and PORT environment variables.",
+                                                                 "Added health, anonymous installation registration/revocation, finalized session upload, and stable cursor paging endpoints. Bearer tokens are generated from 256 bits of SecureRandom entropy and only SHA-256 hashes are stored.",
+                                                                 "Added idempotent session inserts keyed by installation/session UUID; exact duplicate payloads are accepted without creating a second row and conflicting payloads receive HTTP 409. Server has no reward ledger or reward issuance.",
+                                                                 "Added input validation, generic non-sensitive error responses, and no request-body/call logging. Added versioned Flyway schema constraints and README API/deployment notes.",
+                                                                 "Added service/route tests and Testcontainers PostgreSQL integration coverage for Flyway migrations, authentication/revocation, validation, idempotency/conflict, and paging. Extended full verification to run both server suites."
+                                                             ],
+                                          "commands":  [
+                                                           {
+                                                               "command":  ".\\gradlew.bat :server:test",
+                                                               "result":  "pass"
+                                                           },
+                                                           {
+                                                               "command":  ".\\gradlew.bat :server:postgresIntegrationTest",
+                                                               "result":  "pass against disposable PostgreSQL 16 container"
+                                                           },
+                                                           {
+                                                               "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                                               "result":  "pass, exit code 0; Android Ktlint/Detekt/JVM/lint/assembly plus server unit and PostgreSQL integration tests"
+                                                           },
+                                                           {
+                                                               "command":  ".\\gradlew.bat :app:dependencyInsight --dependency org.postgresql:postgresql --configuration debugRuntimeClasspath",
+                                                               "result":  "pass; no PostgreSQL JDBC dependency in Android runtime classpath"
+                                                           }
+                                                       ],
+                                          "security":  "No CallLogging or request-content logging is installed. Error responses omit exception and payload contents. Production deployment must expose the API over HTTPS; credentials are runtime environment inputs and are absent from the APK/source values."
+                                      }
+                     },
+                     {
+                         "id":  "FT-SYNC-001",
+                         "name":  "Offline-first Room to PostgreSQL synchronization",
+                         "description":  "Synchronize finalized local sessions through the backend while Room remains the Android UI source of truth.",
+                         "dependencies":  [
+                                              "FT-DATA-001",
+                                              "FT-BACKEND-001"
+                                          ],
+                         "status":  "pass",
+                         "acceptanceCriteria":  [
+                                                    "Sync is disabled by default and requires explicit user opt-in",
+                                                    "A server-issued anonymous bearer token is protected with Android Keystore-backed storage",
+                                                    "A Room outbox retries finalized sessions without blocking local timer, garden, history, or statistics flows",
+                                                    "Repeated uploads and downloads do not duplicate sessions or rewards",
+                                                    "Offline, reconnect, server failure, invalid token, process recreation, and retry behavior have deterministic tests",
+                                                    "Disabling sync cancels scheduled work and removes the local installation credential",
+                                                    "Network traffic is limited to the configured HTTPS API and no PostgreSQL driver or credential is packaged in Android"
+                                                ],
+                         "verification":  [
+                                              "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                              "Sync repository and worker unit tests pass",
+                                              "End-to-end emulator test passes against the local PostgreSQL-backed server"
+                                          ],
+                         "evidence":  {
+                                          "status":  "pass",
+                                          "changed":  [
+                                                          "Optional periodic sync over configured HTTPS API; explicit opt-in, Keystore-protected anonymous installation token, Room outbox, and idempotent imports/rewards.",
+                                                          "Opt-out cancels periodic work and removes local installation credentials; backend and emulator PostgreSQL E2E coverage recorded."
+                                                      ],
+                                          "checks":  [
+                                                         ".\\gradlew.bat :app:ktlintCheck :app:detekt :app:testDebugUnitTest --console=plain — pass after final unit-test changes.",
+                                                         "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full — pass (exit 0).",
+                                                         ".\\gradlew.bat :app:connectedDebugAndroidTest -PfocusTreeSyncApiUrl=https://localhost:8443 --console=plain — pass, API 37 emulator, 21 tests, 0 failures and 0 skipped, local PostgreSQL-backed E2E.",
+                                                         ".\\gradlew.bat :app:dependencyInsight --dependency org.postgresql:postgresql --configuration debugRuntimeClasspath --console=plain — no matching Android runtime dependency."
+                                                     ]
+                                      }
+                     },
+                     {
+                         "id":  "FT-REL-001",
+                         "name":  "MVP release readiness",
+                         "description":  "Validate privacy, accessibility, performance, documentation, and a repeatable release candidate build.",
+                         "dependencies":  [
+                                              "FT-LIFE-001",
+                                              "FT-GARDEN-001",
+                                              "FT-HISTORY-001",
+                                              "FT-SETTINGS-001",
+                                              "FT-SYNC-001"
+                                          ],
+                         "status":  "in-progress",
+                         "acceptanceCriteria":  [
+                                                    "All preceding MVP features are pass with evidence",
+                                                    "Full verification is green from a clean checkout",
+                                                    "Network access is limited to the approved HTTPS sync API and no sensitive Android permission is present without an approved requirement",
+                                                    "TalkBack, large text, dark theme, and rotation checks are recorded",
+                                                    "README documents build, test, privacy, and known limitations",
+                                                    "Release signing or publication is not performed without explicit user approval"
+                                                ],
+                         "verification":  [
+                                              "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full",
+                                              "Manual release checklist evidence is recorded in session-handoff.md"
+                                          ],
+                         "evidence":  {
+                                          "status":  "in-progress",
+                                          "recordedAt":  "2026-11-08",
+                                          "checks":  [
+                                                         "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full — pass, exit 0, from a fresh source snapshot with build/cache outputs excluded.",
+                                                         "API 37 instrumentation passed 21/21, including PostgreSQL sync E2E and rotation restoration; dark theme and large-font checks recorded.",
+                                                         "TalkBack bound on emulator; Settings swipe navigation and accessible label hierarchy checked, then service turned off.",
+                                                         "Merged debug manifest has no sensitive permissions. README documents build, test, privacy, synchronization setup and limitations.",
+                                                         "No release signing or publication performed."
+                                                     ],
+                                          "blockers":  [
+                                                           "Commit-backed clean checkout verification will run after the initial push to the supplied GitHub repository."
+                                                       ]
+                                      }
+                     },
+                     {
+                         "id":  "FT-ART-001",
+                         "name":  "Autumn tree growth-stage pixel art",
+                         "description":  "Create a reference-led, six-stage autumn tree sprite family and export it to the PXL gallery sheet.",
+                         "dependencies":  [
+
+                                          ],
+                         "status":  "pass",
+                         "acceptanceCriteria":  [
+                                                    "Six independently composed 128x160 sprites preserve the shared ground baseline and grow progressively from a two-leaf seedling to a mature tree",
+                                                    "Stage 6 has an organic asymmetric canopy, readable branching, a dark twisting trunk, and layered golden-to-burnt-red foliage inspired by the supplied reference",
+                                                    "All six sprite PNGs, the growth sheet, and frame metadata build successfully and appear in the PXL gallery with zero asset errors",
+                                                    "Every stage scores at least 4/5 on silhouette, structure, pixel clusters, palette, lighting/depth, reference similarity, and overall polish",
+                                                    "All PXL lint findings are resolved or documented as a visually confirmed false positive"
+                                                ],
+                         "verification":  [
+                                              "node C:\\Users\\Admin\\.agents\\skills\\pxl-pixel-art\\bin\\pxl.js build artwork\\autumn-tree\\autumn-tree-stages.px.js",
+                                              "node C:\\Users\\Admin\\.agents\\skills\\pxl-pixel-art\\bin\\pxl.js lint artwork\\autumn-tree\\autumn-tree-stages.px.js",
+                                              "node C:\\Users\\Admin\\.agents\\skills\\pxl-pixel-art\\bin\\pxl.js list artwork\\autumn-tree\\autumn-tree-stages.px.js",
+                                              "Inspect every PXL preview, exported PNG, gallery sheet, and metadata"
+                                          ],
+                         "evidence":  {
+                                          "recordedAt":  "2026-11-08",
+                                          "implementation":  [
+                                                                 "Authored six independent 128x160 autumn-tree sprites with shared baseline and progressive seedling-to-mature silhouettes.",
+                                                                 "Added directional foliage highlights and cleaned lint-marked pixels/contour corners in Stages 4–6.",
+                                                                 "Built six sprite PNGs, 783x160 growth sheet and frame JSON; PXL live gallery reports six assets, one sheet and zero errors.",
+                                                                 "Reviewed each stage at native and enlarged scale; quality-review.md records all seven criteria at 4/5 for every stage."
+                                                             ],
+                                          "commands":  [
+                                                           {
+                                                               "result":  "pass: six 128x160 sprites and 783x160 six-frame sheet.",
+                                                               "command":  "node C:\\Users\\Admin\\.agents\\skills\\pxl-pixel-art\\bin\\pxl.js build artwork\\autumn-tree\\autumn-tree-stages.px.js"
+                                                           },
+                                                           {
+                                                               "result":  "pass with one visually confirmed false positive: Stage 1 centered-seedling pillow heuristic (correlation 0.55); Stages 2–6 clean.",
+                                                               "command":  "node C:\\Users\\Admin\\.agents\\skills\\pxl-pixel-art\\bin\\pxl.js lint artwork\\autumn-tree\\autumn-tree-stages.px.js"
+                                                           },
+                                                           {
+                                                               "result":  "pass: six sprites and one sheet listed.",
+                                                               "command":  "node C:\\Users\\Admin\\.agents\\skills\\pxl-pixel-art\\bin\\pxl.js list artwork\\autumn-tree\\autumn-tree-stages.px.js"
+                                                           },
+                                                           {
+                                                               "result":  "pass: six 128x160 assets, one growth sheet, zero gallery errors.",
+                                                               "command":  "PXL serve /api/state at http://127.0.0.1:4321"
+                                                           }
+                                                       ],
+                                          "notes":  [
+                                                        "Stage 1 lint heuristic is a visually confirmed false positive: a tiny two-leaf seedling and compact centered soil anchor, with no concentric shaded surface.",
+                                                        "All six stage scores are 4/5 for silhouette, structure, pixel clusters, palette, lighting/depth, reference similarity and overall polish; rationale in artwork/autumn-tree/quality-review.md."
+                                                    ]
+                                      }
+                     }
+                 ]
+}

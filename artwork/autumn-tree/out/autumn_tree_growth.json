@@ -1,0 +1,134 @@
+{
+ "frames": {
+  "tree_stage_1": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 160
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 160
+   },
+   "sourceSize": {
+    "w": 128,
+    "h": 160
+   }
+  },
+  "tree_stage_2": {
+   "frame": {
+    "x": 131,
+    "y": 0,
+    "w": 128,
+    "h": 160
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 160
+   },
+   "sourceSize": {
+    "w": 128,
+    "h": 160
+   }
+  },
+  "tree_stage_3": {
+   "frame": {
+    "x": 262,
+    "y": 0,
+    "w": 128,
+    "h": 160
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 160
+   },
+   "sourceSize": {
+    "w": 128,
+    "h": 160
+   }
+  },
+  "tree_stage_4": {
+   "frame": {
+    "x": 393,
+    "y": 0,
+    "w": 128,
+    "h": 160
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 160
+   },
+   "sourceSize": {
+    "w": 128,
+    "h": 160
+   }
+  },
+  "tree_stage_5": {
+   "frame": {
+    "x": 524,
+    "y": 0,
+    "w": 128,
+    "h": 160
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 160
+   },
+   "sourceSize": {
+    "w": 128,
+    "h": 160
+   }
+  },
+  "tree_stage_6": {
+   "frame": {
+    "x": 655,
+    "y": 0,
+    "w": 128,
+    "h": 160
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 128,
+    "h": 160
+   },
+   "sourceSize": {
+    "w": 128,
+    "h": 160
+   }
+  }
+ },
+ "meta": {
+  "app": "pxl",
+  "image": "autumn_tree_growth.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 783,
+   "h": 160
+  },
+  "scale": "1"
+ }
+}

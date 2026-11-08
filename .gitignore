@@ -1,0 +1,16 @@
+*.iml
+.gradle/
+.idea/
+.kotlin/
+build/
+**/build/
+captures/
+local.properties
+*.apk
+*.aab
+*.jks
+*.keystore
+keystore.properties
+.agents/
+.bootstrap/
+*.bak
