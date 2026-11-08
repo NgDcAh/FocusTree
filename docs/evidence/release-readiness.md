@@ -7,7 +7,7 @@ publication was performed.
 
 - `powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\verify.ps1 -Scope full` — passed (exit 0; formatting, Detekt, JVM tests, lint, debug build, and backend integration gate).
 - The same full gate also passed (exit 0) from a fresh source snapshot with build/cache outputs excluded.
-- After pushing initial commit `7321ce32414dab40b86b228d9e2bb469d037754d` to `main`, a fresh clone of `https://github.com/NgDcAh/FocusTree.git` at that exact revision passed `powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\verify.ps1 -Scope full` (exit 0; 82 tasks, full verification gate). The clone's ignored `local.properties` contains only the Android SDK location.
+- After pushing initial commit `baa469bab372bced482a25a40ddaf1256040c789` to `main`, a fresh clone of `https://github.com/NgDcAh/FocusTree.git` at that exact revision passed `powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\verify.ps1 -Scope full` (exit 0; 82 tasks, full verification gate). The clone's ignored `local.properties` contains only the Android SDK location.
 - `:app:connectedDebugAndroidTest -PfocusTreeSyncApiUrl=https://localhost:8443 --console=plain` — passed on Medium_Phone_API_37.0 (21 tests, 0 failures, 0 skipped), including PostgreSQL-backed sync E2E and landscape/portrait session restoration.
 - Settings dark theme and 1.5x font-scale checks passed; screenshots are in `docs/evidence/settings/`.
 - Lifecycle and notification-permission scenario evidence is in `docs/evidence/lifecycle/`.

@@ -585,7 +585,7 @@
                                           "status":  "pass",
                                           "recordedAt":  "2026-11-08",
                                           "checks":  [
-                                                         "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full — pass, exit 0, from fresh clone of commit 7321ce32414dab40b86b228d9e2bb469d037754d on main.",
+                                                         "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full — pass, exit 0, from fresh clone of final commit baa469bab372bced482a25a40ddaf1256040c789 on main (82 tasks).",
                                                          "API 37 instrumentation passed 21/21 including PostgreSQL sync E2E and rotation restoration; dark theme, large font and TalkBack navigation checked.",
                                                          "Merged Android manifest reviewed; no accessibility-service, usage-access, notification-listener or device-admin permission. README covers build/test/privacy/known limitations.",
                                                          "No release signing or publication performed."

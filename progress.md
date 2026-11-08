@@ -4,7 +4,7 @@
 
 **Last updated:** 2026-11-08
 
-All tracked features pass with recorded evidence. MVP release verification passed from a fresh clone of commit `7321ce32414dab40b86b228d9e2bb469d037754d`. The app remains unsigned and unpublished.
+All tracked features pass with recorded evidence. MVP release verification passed from a fresh clone of commit `baa469bab372bced482a25a40ddaf1256040c789`. The app remains unsigned and unpublished.
 
 ## Completed Features
 
