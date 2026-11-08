@@ -568,7 +568,7 @@
                                               "FT-SETTINGS-001",
                                               "FT-SYNC-001"
                                           ],
-                         "status":  "in-progress",
+                         "status":  "pass",
                          "acceptanceCriteria":  [
                                                     "All preceding MVP features are pass with evidence",
                                                     "Full verification is green from a clean checkout",
@@ -582,17 +582,16 @@
                                               "Manual release checklist evidence is recorded in session-handoff.md"
                                           ],
                          "evidence":  {
-                                          "status":  "in-progress",
+                                          "status":  "pass",
                                           "recordedAt":  "2026-11-08",
                                           "checks":  [
-                                                         "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full — pass, exit 0, from a fresh source snapshot with build/cache outputs excluded.",
-                                                         "API 37 instrumentation passed 21/21, including PostgreSQL sync E2E and rotation restoration; dark theme and large-font checks recorded.",
-                                                         "TalkBack bound on emulator; Settings swipe navigation and accessible label hierarchy checked, then service turned off.",
-                                                         "Merged debug manifest has no sensitive permissions. README documents build, test, privacy, synchronization setup and limitations.",
+                                                         "powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1 -Scope full — pass, exit 0, from fresh clone of commit 7321ce32414dab40b86b228d9e2bb469d037754d on main.",
+                                                         "API 37 instrumentation passed 21/21 including PostgreSQL sync E2E and rotation restoration; dark theme, large font and TalkBack navigation checked.",
+                                                         "Merged Android manifest reviewed; no accessibility-service, usage-access, notification-listener or device-admin permission. README covers build/test/privacy/known limitations.",
                                                          "No release signing or publication performed."
                                                      ],
                                           "blockers":  [
-                                                           "Commit-backed clean checkout verification will run after the initial push to the supplied GitHub repository."
+
                                                        ]
                                       }
                      },

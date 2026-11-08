@@ -1,18 +1,16 @@
 # Session Handoff
 
-## Active Work
+## Status
 
-`FT-SYNC-001` and `FT-ART-001` pass. Finish `FT-REL-001` by pushing the initial commit, cloning that commit into a fresh directory, and rerunning the full gate.
+All tracked features pass. `FT-REL-001` full verification passed from a fresh clone of commit `7321ce32414dab40b86b228d9e2bb469d037754d` on `main`.
 
 ## Verified
 
-- Sync: full gate passed; API 37 PostgreSQL-backed emulator suite passed 21/21; Android runtime has no PostgreSQL driver.
-- Art: six 128x160 sprites and sheet/metadata build; stages 2–6 lint clean; Stage 1 centered-seedling warning is a visually confirmed false positive. All seven quality categories score 4/5 across all stages; gallery state reports zero errors.
-- Release: full gate passed from a clean source snapshot; emulator, TalkBack Settings navigation, permissions and README evidence recorded. Commit-backed clone gate remains.
+- Full gate: formatting, Detekt, JVM tests, Android lint, debug build, server tests and PostgreSQL integration tests — pass, exit 0.
+- Android API 37 instrumentation: 21/21 pass, including local PostgreSQL sync E2E and rotation restoration. Dark theme, large font and TalkBack Settings navigation checked.
+- Pixel art: six 128x160 sprites, 783x160 growth sheet and metadata build; Stage 1 one visually confirmed false-positive lint warning, stages 2–6 clean; gallery shows zero errors; every stage/category rated at least 4/5.
+- Manifest, README privacy guidance and no-sign/no-publish boundary reviewed.
 
-## Next Actions
+## Repository
 
-1. Push the reviewed initial commit to `https://github.com/NgDcAh/FocusTree`.
-2. Run full verification from a fresh clone of that commit, update release evidence, and push the final state update.
-
-Do not sign or publish an application. Keep local DB credentials and private TLS material outside Git.
+Pushed to `https://github.com/NgDcAh/FocusTree` on `main`; the feature statuses and evidence in this handoff are included in the final evidence commit. Do not sign or publish the app without explicit authorization.

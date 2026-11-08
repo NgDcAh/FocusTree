@@ -6,7 +6,8 @@ publication was performed.
 ## Verification
 
 - `powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\verify.ps1 -Scope full` — passed (exit 0; formatting, Detekt, JVM tests, lint, debug build, and backend integration gate).
-- The same full gate also passed (exit 0) from a fresh source snapshot at `C:\Users\Admin\AppData\Local\Temp\FocusTree-clean-gate` after excluding build/cache outputs. Its `local.properties` contains only a temporary SDK location. This is not a Git checkout: the supplied GitHub repository cloned as empty, with no commits.
+- The same full gate also passed (exit 0) from a fresh source snapshot with build/cache outputs excluded.
+- After pushing initial commit `7321ce32414dab40b86b228d9e2bb469d037754d` to `main`, a fresh clone of `https://github.com/NgDcAh/FocusTree.git` at that exact revision passed `powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\verify.ps1 -Scope full` (exit 0; 82 tasks, full verification gate). The clone's ignored `local.properties` contains only the Android SDK location.
 - `:app:connectedDebugAndroidTest -PfocusTreeSyncApiUrl=https://localhost:8443 --console=plain` — passed on Medium_Phone_API_37.0 (21 tests, 0 failures, 0 skipped), including PostgreSQL-backed sync E2E and landscape/portrait session restoration.
 - Settings dark theme and 1.5x font-scale checks passed; screenshots are in `docs/evidence/settings/`.
 - Lifecycle and notification-permission scenario evidence is in `docs/evidence/lifecycle/`.
@@ -16,5 +17,5 @@ publication was performed.
 ## Remaining Release Checks
 
 - TalkBack was enabled on the API 37 emulator; Android reported the TalkBack service bound. A swipe-navigation check on Settings exposed the screen labels, theme choices, focus-duration field, sync toggle, and sync status in the accessibility hierarchy. The service was turned off after the check. Spoken audio quality was not independently recorded by the host.
-- A commit-backed clean checkout could not be demonstrated because the supplied GitHub repository is empty. Full verification passed in both the current workspace and a fresh source snapshot; repeat from a Git checkout after source has been committed there.
+- The commit-backed clean-clone gate passed. No release signing or publication was performed.
 - No signed release artifact was built, and nothing was published.
